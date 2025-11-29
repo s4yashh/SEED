@@ -15,21 +15,25 @@ Your app works locally but not on Vercel because the frontend is trying to conne
 3. **Add the following files to your repository:**
 
    Create `Backend/Procfile`:
+
    ```
    web: python mainfile.py
    ```
 
    Create `Backend/runtime.txt`:
+
    ```
    python-3.11.0
    ```
 
 4. **Deploy Settings:**
+
    - Root Directory: `Backend`
    - Build Command: `pip install -r ../requirements.txt`
    - Start Command: `python mainfile.py`
 
 5. **Environment Variables:**
+
    - Add `PORT` = `5002`
 
 6. **Copy your Railway URL** (e.g., `https://seed-production.up.railway.app`)
@@ -41,6 +45,7 @@ Your app works locally but not on Vercel because the frontend is trying to conne
 2. **New Web Service** → Connect your GitHub repo
 
 3. **Settings:**
+
    - Name: `seed-backend`
    - Environment: `Python 3`
    - Build Command: `pip install -r requirements.txt`
@@ -51,11 +56,13 @@ Your app works locally but not on Vercel because the frontend is trying to conne
 ### Update Frontend for Production
 
 1. **Update `.env.production` file:**
+
    ```env
    VITE_API_URL=https://your-backend-url-from-railway-or-render.com
    ```
 
 2. **Add Environment Variable to Vercel:**
+
    - Go to Vercel Dashboard → Your Project → Settings → Environment Variables
    - Add: `VITE_API_URL` = `https://your-backend-url.com`
    - Redeploy your project
@@ -75,17 +82,20 @@ Your app works locally but not on Vercel because the frontend is trying to conne
 ## Common Issues
 
 ### Backend URL not updating
+
 - Make sure to add the environment variable in Vercel Dashboard
 - Redeploy after adding the variable
 - Clear browser cache
 
 ### CORS errors
+
 - Update `mainfile.py` to allow your Vercel domain:
   ```python
   CORS(app, resources={r"/*": {"origins": ["https://your-vercel-app.vercel.app", "http://localhost:5173"]}})
   ```
 
 ### Database not persisting on Railway/Render
+
 - These platforms use ephemeral storage
 - Consider upgrading to PostgreSQL or MySQL for production
 - Or use Railway's persistent volumes
@@ -93,21 +103,25 @@ Your app works locally but not on Vercel because the frontend is trying to conne
 ## Free Tier Limits
 
 **Railway:**
+
 - $5 free credit per month
 - Apps sleep after 30 minutes of inactivity
 
 **Render:**
+
 - Free tier apps sleep after 15 minutes of inactivity
 - First request after sleep takes ~30 seconds
 
 ## Recommended: Add a Procfile for Backend
 
 Create `Backend/Procfile`:
+
 ```
 web: gunicorn mainfile:app
 ```
 
 Update `requirements.txt`:
+
 ```
 Flask==3.0.0
 Flask-CORS==4.0.0

@@ -3,29 +3,35 @@
 ## What Was the Problem?
 
 Your app worked locally but not on Vercel because:
+
 - Frontend was hardcoded to use `http://127.0.0.1:5002` (localhost)
 - On Vercel, localhost doesn't exist - it needs a public backend URL
 
 ## ✅ What I Fixed
 
 ### 1. Environment Variables Setup
+
 - Created `.env.local` for local development
 - Created `.env.production` for production deployment
 - All API calls now use `import.meta.env.VITE_API_URL`
 
 ### 2. Updated All API Calls
+
 Fixed in these files:
+
 - ✅ `src/pages/SignIn.jsx`
 - ✅ `src/pages/Signup.jsx`
 - ✅ `src/components/ExploreSection.jsx`
 - ✅ `src/components/Header.jsx`
 
 ### 3. Backend Deployment Files
+
 - ✅ Created `Backend/Procfile` for deployment
 - ✅ Created `Backend/runtime.txt` for Python version
 - ✅ Updated `mainfile.py` to use PORT environment variable
 
 ### 4. Documentation
+
 - ✅ Updated README.md with full instructions
 - ✅ Created DEPLOYMENT.md with step-by-step guide
 
@@ -34,6 +40,7 @@ Fixed in these files:
 ### Step 1: Deploy Your Backend (Choose One)
 
 #### Option A: Railway (Recommended)
+
 1. Go to https://railway.app
 2. Sign up with GitHub
 3. Click "New Project" → "Deploy from GitHub repo"
@@ -45,6 +52,7 @@ Fixed in these files:
 6. Copy your Railway URL (e.g., `https://seed-production.up.railway.app`)
 
 #### Option B: Render
+
 1. Go to https://render.com
 2. Sign up and create "New Web Service"
 3. Connect your GitHub repo
@@ -104,7 +112,7 @@ You can test if the environment variable works:
 
 ```javascript
 // Add this to SignIn.jsx temporarily
-console.log('API URL:', import.meta.env.VITE_API_URL);
+console.log("API URL:", import.meta.env.VITE_API_URL);
 ```
 
 - Locally: Should show `http://127.0.0.1:5002`
@@ -113,6 +121,7 @@ console.log('API URL:', import.meta.env.VITE_API_URL);
 ## 🆘 If Still Not Working
 
 Common issues:
+
 1. **CORS Error**: Add your Vercel domain to CORS in `mainfile.py`
 2. **404 on backend**: Check backend URL is correct
 3. **Environment variable not found**: Redeploy Vercel after adding the variable
