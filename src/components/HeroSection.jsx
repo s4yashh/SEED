@@ -1,25 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const HeroSection = () => {
-  useEffect(() => {
-    // Dynamically add the Spline Viewer script
-    const script = document.createElement("script");
-    script.type = "module";
-    script.src = "https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js";
-    document.body.appendChild(script);
-  }, []);
-
   return (
     <section className="relative flex items-center justify-center h-screen text-white">
-      {/* 3D Earth Model as Background */}
-      <div className="absolute inset-0 z-0">
-        <spline-viewer
-          url="https://prod.spline.design/a9H7Dp5LmvbOE106/scene.splinecode"
-          style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0, transform: "scale(1.5)",
-
-          }}
-        />
-      </div>
+      {/* Static background image instead of Spline 3D model */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/assets/image1.svg')" }}
+      />
 
       {/* Hero Content */}
       <div className="relative z-10 text-center p-8">

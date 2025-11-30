@@ -3,12 +3,13 @@ import React from "react";
 const AISection = () => {
   return (
     <section className="flex flex-col md:flex-row items-center justify-between py-20 px-16">
-      {/* Spline 3D Model on the Left */}
+      {/* Static Illustration on the Left (removed Spline 3D model) */}
       <div className="w-full md:w-1/2 flex justify-center md:justify-start">
-        <spline-viewer
-          url="https://prod.spline.design/90l6AjawqoFEH91U/scene.splinecode"
-          className="w-[350px] h-[350px] md:w-[500px] md:h-[500px]"
-        ></spline-viewer>
+        <img
+          src="/assets/image1.svg"
+          alt="AI Illustration"
+          className="w-[350px] h-[350px] md:w-[500px] md:h-[500px] object-contain"
+        />
       </div>
 
       {/* AI Text Content slightly shifted right */}

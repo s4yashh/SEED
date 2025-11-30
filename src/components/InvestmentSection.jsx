@@ -11,12 +11,12 @@ const InvestmentSection = () => {
 
   return (
     <section className="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
-      {/* Full-Screen 3D Model */}
+      {/* Full-Screen Static Background (removed Spline 3D model) */}
       {isLoaded && (
-        <spline-viewer
-          url="https://prod.spline.design/l6n1Pouex3BExMok/scene.splinecode"
-          className="absolute inset-0 w-full h-full"
-        ></spline-viewer>
+        <div
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: "url('/assets/image1.svg')" }}
+        />
       )}
 
       {/* Centered Text Overlay */}
